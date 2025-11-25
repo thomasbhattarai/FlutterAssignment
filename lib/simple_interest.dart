@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// ignore: use_key_in_widget_constructors
 class SimpleInterestPage extends StatefulWidget {
   @override
   State<SimpleInterestPage> createState() => _SimpleInterestPageState();

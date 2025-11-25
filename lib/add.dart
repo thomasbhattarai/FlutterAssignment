@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// ignore: use_key_in_widget_constructors
 class AddPage extends StatefulWidget {
   @override
   State<AddPage> createState() => _AddPageState();
@@ -34,8 +35,10 @@ class _AddPageState extends State<AddPage> {
                 setState(() => result = "Sum = ${x + y}");
               },
             ),
+            
             Text(result),
           ],
+          
         ),
       ),
     );
