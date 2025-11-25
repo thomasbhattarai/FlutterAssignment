@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'add.dart';
-import 'subtract.dart';
-import 'simple_interest.dart';
+import 'calculator/add.dart';
+import 'calculator/subtract.dart';
+import 'calculator/simple_interest.dart';
 import 'idcard.dart';
 import 'homepractice.dart';
 import 'login_screen.dart';
-import 'screens/welcome_screen.dart';
 import 'widget/custom_scaffold.dart';
 import 'app_text_styles.dart';
 
@@ -54,13 +53,6 @@ class Home extends StatelessWidget {
               ),
             ),
 
-            ElevatedButton(
-              child: Text("Welcome Screen"),
-              onPressed: () => Navigator.push(
-                context,
-                MaterialPageRoute(builder: (_) => WelcomeScreen()),
-              ),
-            ),
             ElevatedButton(
               child: Text("Home Practice"),
               onPressed: () => Navigator.push(

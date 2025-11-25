@@ -10,6 +10,7 @@ class SignUpScreen extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
+  String name = "";
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final phoneController = TextEditingController();
@@ -18,11 +19,21 @@ class _SignUpScreenState extends State<SignUpScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.blueGrey,
+        title: Text(
+          'Signup Page',
+          style: AppTextStyles.poppinsBold.copyWith(
+            fontSize: 20,
+            color: Colors.white,
+          ),
+        ),
+      ),
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.only(
-            top: 40,
+            top: 10,
             left: 40,
             right: 40,
             bottom: 40,
@@ -32,9 +43,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
             children: [
               Image.asset('assets/images/logo.png', width: 200),
               Text(
-                'Get on Board!',
+                'Get on Board $name!',
                 style: AppTextStyles.poppinsBold.copyWith(fontSize: 28),
               ),
+
               Text(
                 "Create your profile to start your journey",
                 style: AppTextStyles.poppinsMedium.copyWith(fontSize: 16),
@@ -51,6 +63,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     fontSize: 14,
                     color: Colors.black.withOpacity(0.6),
                   ),
+
                   border: OutlineInputBorder(
                     borderSide: BorderSide(color: Colors.grey, width: 1),
                     borderRadius: BorderRadius.all(Radius.circular(8)),
@@ -65,6 +78,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ),
                   prefixIcon: Icon(Icons.person, size: 26),
                 ),
+                onChanged: (value) {
+                  setState(() => name = value);
+                },
               ),
 
               SizedBox(height: 14),

@@ -18,10 +18,20 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
+      appBar: AppBar(
+        backgroundColor: Colors.blueGrey,
+        title: Text(
+          'Login Page',
+          style: AppTextStyles.poppinsBold.copyWith(
+            fontSize: 20,
+            color: Colors.white,
+          ),
+        ),
+      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.only(
-            top: 40,
+            top: 10,
             left: 40,
             right: 40,
             bottom: 40,
