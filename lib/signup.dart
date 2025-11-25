@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_assignment/app_text_styles.dart';
-import 'package:flutter_assignment/signup.dart'; // add this import
+import 'login_screen.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class SignUpScreen extends StatefulWidget {
+  const SignUpScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<SignUpScreen> createState() => _SignUpScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _SignUpScreenState extends State<SignUpScreen> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+  final phoneController = TextEditingController();
+  final nameController = TextEditingController();
   bool isObscure = true;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,17 +31,43 @@ class _LoginScreenState extends State<LoginScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Image.asset('assets/images/logo.png', width: 200),
-              SizedBox(height: 10),
               Text(
-                'Welcome Back',
+                'Get on Board!',
                 style: AppTextStyles.poppinsBold.copyWith(fontSize: 28),
               ),
               Text(
-                "Make it work, make is right, make it fast",
+                "Create your profile to start your journey",
                 style: AppTextStyles.poppinsMedium.copyWith(fontSize: 16),
               ),
-
               SizedBox(height: 30),
+
+              TextFormField(
+                style: AppTextStyles.poppinsRegular.copyWith(fontSize: 14),
+                keyboardType: TextInputType.name,
+                controller: nameController,
+                decoration: InputDecoration(
+                  hintText: 'Full Name',
+                  hintStyle: AppTextStyles.poppinsRegular.copyWith(
+                    fontSize: 14,
+                    color: Colors.black.withOpacity(0.6),
+                  ),
+                  border: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.grey, width: 1),
+                    borderRadius: BorderRadius.all(Radius.circular(8)),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.grey, width: 1),
+                    borderRadius: BorderRadius.all(Radius.circular(8)),
+                  ),
+                  contentPadding: EdgeInsets.symmetric(
+                    horizontal: 10,
+                    vertical: 20,
+                  ),
+                  prefixIcon: Icon(Icons.person, size: 26),
+                ),
+              ),
+
+              SizedBox(height: 14),
 
               // Email
               TextFormField(
@@ -69,6 +96,34 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
 
+              SizedBox(height: 14),
+
+              // Email
+              TextFormField(
+                style: AppTextStyles.poppinsRegular.copyWith(fontSize: 14),
+                keyboardType: TextInputType.phone,
+                controller: phoneController,
+                decoration: InputDecoration(
+                  hintText: 'Phone Number',
+                  hintStyle: AppTextStyles.poppinsRegular.copyWith(
+                    fontSize: 14,
+                    color: Colors.black.withOpacity(0.6),
+                  ),
+                  border: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.grey, width: 1),
+                    borderRadius: BorderRadius.all(Radius.circular(8)),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.grey, width: 1),
+                    borderRadius: BorderRadius.all(Radius.circular(8)),
+                  ),
+                  contentPadding: EdgeInsets.symmetric(
+                    horizontal: 10,
+                    vertical: 20,
+                  ),
+                  prefixIcon: Icon(Icons.phone, size: 26),
+                ),
+              ),
               SizedBox(height: 14),
 
               // Password
@@ -108,26 +163,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
               ),
-
-              SizedBox(height: 10),
-
-              Align(
-                alignment: Alignment.centerRight,
-                child: TextButton(
-                  onPressed: () {},
-                  child: Text(
-                    'Forgot Password',
-                    style: AppTextStyles.poppinsMedium.copyWith(
-                      color: Colors.blue,
-                      fontSize: 16,
-                    ),
-                  ),
-                ),
-              ),
-
               SizedBox(height: 20),
 
-              // Login button
+              // Signin button
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.black,
@@ -138,30 +176,49 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 onPressed: () {},
                 child: Text(
-                  'LOGIN',
+                  'Signup',
                   style: AppTextStyles.poppinsMedium.copyWith(
                     fontSize: 20,
                     color: Colors.white,
                   ),
                 ),
               ),
-
               SizedBox(height: 20),
-
-              Align(
-                alignment: Alignment.center,
-                child: Text(
-                  "OR",
-                  style: AppTextStyles.poppinsRegular.copyWith(
-                    fontSize: 18,
-                    color: Colors.black,
+              Row(
+                children: [
+                  Expanded(child: Divider(thickness: 1)),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 8),
+                    child: Text(
+                      "OR",
+                      style: AppTextStyles.poppinsMedium.copyWith(fontSize: 18),
+                    ),
                   ),
-                ),
+                  Expanded(child: Divider(thickness: 1)),
+                ],
               ),
 
               SizedBox(height: 20),
 
-              // Google Sign-in
+              // Signin button
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.black,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  minimumSize: Size(double.infinity, 56),
+                ),
+                onPressed: () {},
+                child: Text(
+                  'Connect With Phone Number',
+                  style: AppTextStyles.poppinsRegular.copyWith(
+                    fontSize: 20,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+              SizedBox(height: 20),
               OutlinedButton(
                 style: OutlinedButton.styleFrom(
                   shape: RoundedRectangleBorder(
@@ -190,15 +247,12 @@ class _LoginScreenState extends State<LoginScreen> {
                   ],
                 ),
               ),
-
-              SizedBox(height: 30),
-
-              // Signup link
+              SizedBox(height: 20),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    "Don't have an account?",
+                    "Already have an account?",
                     style: AppTextStyles.poppinsRegular.copyWith(fontSize: 16),
                   ),
                   SizedBox(width: 8),
@@ -207,12 +261,12 @@ class _LoginScreenState extends State<LoginScreen> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const SignUpScreen(),
+                          builder: (context) => const LoginScreen(),
                         ),
                       );
                     },
                     child: Text(
-                      'Sign Up',
+                      'Login',
                       style: AppTextStyles.poppinsMedium.copyWith(
                         color: Colors.blue,
                         fontSize: 18,
